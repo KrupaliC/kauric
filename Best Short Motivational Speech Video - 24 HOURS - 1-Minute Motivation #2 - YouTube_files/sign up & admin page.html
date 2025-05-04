@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Sign-Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #8e44ad, #3498db);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #ffffff11;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .module {
+            background: #ffffffaa;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            color: #333;
+            text-align: center;
+        }
+        .module h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .module form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .module label {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .module input, .module button {
+            width: 80%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+        }
+        .module input {
+            background: #f0f0f0;
+        }
+        .module button {
+            background: #8e44ad;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .module button:hover {
+            background: #732d91;
+        }
+
+        /* Return Button Styling */
+        button#returnButton {
+            background: #e74c3c;
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button#returnButton:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        button#returnButton img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Return Button -->
+    <div class="container">
+        <!-- Student Sign-Up Module -->
+        <div class="module">
+            <h2>Student Sign-Up</h2>
+            <form id="student-form" action="lib.html" method="post">
+                <label for="student-username">Username:</label>
+                <input type="text" id="student-username" name="student-username" placeholder="Enter username" required>
+
+                <label for="student-email">Email:</label>
+                <input type="email" id="student-email" name="student-email" placeholder="Enter email" required>
+
+                <label for="student-contact-number">Contact number:</label>
+                <input type="text" id="student-number" name="student-number" placeholder="Enter number" required>
+
+                <label for="student-password">Password:</label>
+                <input type="password" id="student-password" name="student-password" placeholder="Enter password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+            <p id="student-message"></p>
+        </div>
+
+        <!-- Admin Login Module -->
+        <div class="module">
+            <h2>Admin Login</h2>
+            <form id="admin-form" action="admin page.html" method="post">
+                <label for="admin-email">Email:</label>
+                <input type="email" id="admin-email" name="admin-email" placeholder="Enter email" required>
+
+                <label for="admin-password">Password:</label>
+                <input type="password" id="admin-password" name="admin-password" placeholder="Enter password" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <p id="admin-message"></p>
+        </div>
+    </div>
+    <button id="returnButton" onclick="window.location.href='lib.html';">
+        <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Back Icon">
+    </button>
+    
+    <script>
+        // Function to return to the previous page
+        function goBack() {
+            window.history.back();
+        }
+
+        // Student Sign-Up Notification
+        document.getElementById("student-form").addEventListener("submit", function(event) {
+            const username = document.getElementById("student-username").value;
+            alert(`Welcome, ${krupali}! You have successfully signed up.`);
+        });
+
+        // Admin Login Notification
+        document.getElementById("admin-form").addEventListener("submit", function(event) {
+            const email = document.getElementById("admin-email").value;
+            alert(`Welcome back, Admin with email: ${email}! You have successfully logged in.`);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Rental & Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #durationField {
+            display: none; /* Initially hidden */
+        }
+        button#returnButton {
+            background: #e74c3c;
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button#returnButton:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        button#returnButton img {
+            width: 20px;
+            height: 20px;
+        } 
+        h2{
+            color: #c0392b;
+            margin-bottom: auto;
+        }
+        form{
+            color:rgb(146, 18, 127);
+        }
+    </style>
+    <script>
+        function handleOptionChange() {
+            var option = document.getElementById("option").value;
+            var durationField = document.getElementById("durationField");
+
+            if (option === "rent") {
+                durationField.style.display = "block";
+            } else {
+                durationField.style.display = "none";
+            }
+        }
+       
+    </script>
+</head>
+<body>
+
+    <h2>Book/Buy</h2>
+
+    <form onsubmit="submitForm(event)">
+        <label for="book">Select a Book:</label>
+        <select id="book" name="book">
+            <option value="The Great Gatsby">The Great Gatsby</option>
+            <option value="Harry Potter">Harry Potter</option>
+            <option value="The Alchemist">years of yes</option>
+            <option value="The Alchemist">To Kill a Mockingbird" by Harper Lee</option>
+            <option value="The Alchemist">"1984" by George Orwell</option>
+            <option value="The Alchemist">The yellow wall paper</option>
+            <option value="The Alchemist">Little Women" by Louisa May Alcott</option>
+            <option value="The Alchemist">"Into the Wardrobe"</option>
+            <option value="The Alchemist">The Alchemist</option>
+            <option value="The Alchemist">The Alchemist</option>
+
+        </select>
+
+        <label for="option">Choose an Option:</label>
+        <select id="option" name="option" onchange="handleOptionChange()">
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
+        </select>
+
+        <div id="durationField">
+            <label for="duration">Rental Duration (in days):</label>
+            <input type="number" id="duration" name="duration" min="1" max="30">
+        </div>
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button onclick="window.location.href='paymentfrom.html';">Submit Request</button>
+
+    </form>
+    <button id="returnButton" onclick="window.location.href='lib.html';">
+        <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Back Icon">
+    </button>
+</body>
+</html>

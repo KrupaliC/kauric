@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .book-container {
+            max-width: 350px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        img {
+            width: 200px;
+            height: 300px;
+            border-radius: 5px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        .buy-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .buy-button:hover {
+            background-color: #218838;
+        }
+        .ratings {
+            color: #f39c12;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        button#returnButton {
+    background: #e74c3c;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+        button#returnButton:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        button#returnButton img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Book Details</h2>
+
+    <div class="book-container">
+        <img src="the_great_gatsby_key_art.webp" alt="Book Cover">
+        <h2>The Great Gatsby</h2>
+        <p><strong>Author:</strong> F. Scott Fitzgerald</p>
+        <p><strong>Genre:</strong> Classic Fiction</p>
+        <p><strong>Edition:</strong> Special Hardcover Edition</p>
+        <p><strong>Format:</strong> Paperback</p>
+        <p class="ratings">⭐⭐⭐⭐☆ (4.5/5)</p>
+        <p><strong>Synopsis:</strong> A timeless novel about wealth, ambition, and love during the Jazz Age.</p>
+        <p class="price">Price: ₹499</p>
+        <p><strong>Shipping:</strong> Free delivery within 3-5 days.</p>
+        <button class="buy-button">Buy Now</button>
+        <button id="" onclick="window.location.href='lib.html';">
+            <img srcreturnButton="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Back Icon">
+        </button>
+       
+        <button id="returnButton" onclick="window.location.href='lib.html';">
+            <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Back Icon">
+        </button>
+    </div>
+   
+</body>
+</html>

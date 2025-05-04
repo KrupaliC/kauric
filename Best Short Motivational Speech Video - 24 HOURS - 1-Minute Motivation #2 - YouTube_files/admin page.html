@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            width: 250px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #2c3e50;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #ecf0f1;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        #contentArea {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Summary Button Styling */
+        #summaryButton {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #summaryButton:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Library Admin</h2>
+        <ul>
+            <li><a href="#" id="manageBooks">Manage books</a></li>
+            <li><a href="#" id="manageUsers">Manage Users</a></li>
+            <li><a href="#" id="viewSummary">Summary</a></li>
+            <li><a href="index.html">Logout</a></li>
+            <li><a href="lib.html" id="back">Back</a></li>
+            
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Welcome, Admin</h1>
+            <p>Select an action from the menu to manage the library system.</p>
+        </header>
+        <div id="contentArea">
+            <p>Dashboard content will appear here.</p>
+        </div>
+    </div>
+    <script>
+        // DOM Elements
+        const contentArea = document.getElementById('contentArea');
+
+        // Actions for Menu Options
+        document.getElementById('manageBooks').addEventListener('click', () => {
+            contentArea.innerHTML = `
+                <h2>Manage Books</h2>
+                <button onclick="addBook()">Add New Book</button>
+                <button onclick="addBook()">Books</button>`;
+               
+        });
+
+        document.getElementById('manageUsers').addEventListener('click', () => {
+            contentArea.innerHTML = `
+                <h2>Manage Users</h2>
+                <button onclick="addUser()">Add New User</button>
+                <p>List of users will appear here...</p>
+            `;
+        });
+
+        document.getElementById('viewSummary').addEventListener('click', () => {
+    // Redirect to the summary page
+    window.location.href = 'Summary.html'; // Replace 'Summary.html' with the actual path to your page
+});
+
+
+
+
+        // Dummy functions for buttons
+        function addBook() {
+            window.location.href = 'books.html';
+            alert('Add Book functionality coming soon!');
+        }
+
+        function addUser() {
+            alert('Add User functionality coming soon!');
+        }
+    </script>
+</body>
+</html>

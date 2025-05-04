@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Book List</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .book-list {
+            list-style-type: none;
+            margin: 20px 0;
+            padding: 0;
+            max-height: 300px; /* Set max height for scrolling */
+            overflow-y: scroll; /* Enable scrolling */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .book-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+
+        .book-list li:last-child {
+            border-bottom: none; /* Remove border for last item */
+        }
+
+        /* Scrollbar Styling */
+        .book-list::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .book-list::-webkit-scrollbar-thumb {
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+
+        .book-list::-webkit-scrollbar-track {
+            background-color: #f4f4f9;
+        }
+
+        /* Form Styling */
+        .add-book-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .add-book-form input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .add-book-form button {
+            padding: 10px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .add-book-form button:hover {
+            background: #2980b9;
+        }
+        #book-list li a {
+            text-decoration: none;
+            color: #170dcd; 
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        #book-list li a:hover {
+            color: #2cc1e7; 
+        }
+        #book-list {
+    max-height: 700px;
+    overflow-y: auto; 
+    border: 2px solid #e60a0a; 
+    border-radius: 5px; 
+    background-color: #f7f2f2; 
+}
+/* Return Button Styling */
+button#returnButton {
+            background: #e74c3c;
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button#returnButton:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        button#returnButton img {
+            width: 20px;
+            height: 20px;
+        }
+    
+    </style>
+</head>
+<body>
+    <section id="books">
+        <h2><i>books</i></h2>
+        <ul id="book-list">
+            <li><a href="https://www.google.com/search?q=Harry+Potter+and+the+Sorcerer%27s+Stone" target="_blank">"Harry Potter and the Sorcerer's Stone" by J.K. Rowling</a></li>
+            <li><a href="https://www.google.com/search?q=To+Kill+a+Mockingbird" target="_blank">"To Kill a Mockingbird" by Harper Lee</a></li>
+            <li><a href="https://www.google.com/search?q=1984+by+George+Orwell" target="_blank">"1984" by George Orwell</a></li>
+            <li><a href="https://www.google.com/search?q=The+Great+Gatsby" target="_blank">"The Great Gatsby" by F. Scott Fitzgerald</a></li>
+            <li><a href="https://www.google.com/search?q=The+Hobbit" target="_blank">"The Hobbit" by J.R.R. Tolkien</a></li>
+            <li><a href="https://www.google.com/search?q=Pride+and+Prejudice" target="_blank">"Pride and Prejudice" by Jane Austen</a></li>
+            <li><a href="https://www.google.com/search?q=The+Catcher+in+the+Rye" target="_blank">"The Catcher in the Rye" by J.D. Salinger</a></li>
+            <li><a href="https://www.google.com/search?q=The+Alchemist+by+Paulo+Coelho" target="_blank">"The Alchemist" by Paulo Coelho</a></li>
+            <li><a href="https://www.google.com/search?q=The+Chronicles+of+Narnia" target="_blank">"The Chronicles of Narnia" by C.S. Lewis</a></li>
+            <li><a href="https://www.google.com/search?q=Little+Women" target="_blank">"Little Women" by Louisa May Alcott</a></li>
+            <li><a href="https://www.google.com/search?q=Harry+Potter+and+the+Sorcerer%27s+Stone" target="_blank">"Harry Potter and the Sorcerer's Stone" by J.K. Rowling</a></li>
+    <li><a href="https://www.google.com/search?q=To+Kill+a+Mockingbird" target="_blank">"To Kill a Mockingbird" by Harper Lee</a></li>
+    <li><a href="https://www.google.com/search?q=1984+by+George+Orwell" target="_blank">"1984" by George Orwell</a></li>
+    <li><a href="https://www.google.com/search?q=The+Great+Gatsby" target="_blank">"The Great Gatsby" by F. Scott Fitzgerald</a></li>
+    <li><a href="https://www.google.com/search?q=The+Hobbit" target="_blank">"The Hobbit" by J.R.R. Tolkien</a></li>
+    <li><a href="https://www.google.com/search?q=Pride+and+Prejudice" target="_blank">"Pride and Prejudice" by Jane Austen</a></li>
+    <li><a href="https://www.google.com/search?q=The+Catcher+in+the+Rye" target="_blank">"The Catcher in the Rye" by J.D. Salinger</a></li>
+    <li><a href="https://www.google.com/search?q=The+Alchemist+by+Paulo+Coelho" target="_blank">"The Alchemist" by Paulo Coelho</a></li>
+    <li><a href="https://www.google.com/search?q=The+Chronicles+of+Narnia" target="_blank">"The Chronicles of Narnia" by C.S. Lewis</a></li>
+    <li><a href="https://www.google.com/search?q=Little+Women" target="_blank">"Little Women" by Louisa May Alcott</a></li>
+            <li><a href="https://www.google.com/search?q=Percy+Jackson+%26+The+Olympians" target="_blank">"Percy Jackson & The Olympians" by Rick Riordan</a></li>
+            <li><a href="https://www.google.com/search?q=The+Hunger+Games" target="_blank">"The Hunger Games" by Suzanne Collins</a></li>
+            <li><a href="https://www.google.com/search?q=Artemis+Fowl" target="_blank">"Artemis Fowl" by Eoin Colfer</a></li>
+            <li><a href="https://www.google.com/search?q=His+Dark+Materials" target="_blank">"His Dark Materials" by Philip Pullman</a></li>
+            <li><a href="https://www.google.com/search?q=Eragon" target="_blank">"Eragon" by Christopher Paolini</a></li>
+            <li><a href="https://www.google.com/search?q=The+Fault+in+Our+Stars" target="_blank">"The Fault in Our Stars" by John Green</a></li>
+            <li><a href="https://www.google.com/search?q=Eleanor+%26+Park" target="_blank">"Eleanor & Park" by Rainbow Rowell</a></li>
+            <li><a href="https://www.google.com/search?q=Wonder+by+RJ+Palacio" target="_blank">"Wonder" by R.J. Palacio</a></li>
+            <li><a href="https://www.google.com/search?q=Looking+for+Alaska" target="_blank">"Looking for Alaska" by John Green</a></li>
+            <li><a href="https://www.google.com/search?q=The+Outsiders" target="_blank">"The Outsiders" by S.E. Hinton</a></li>
+            <li><a href="https://www.google.com/search?q=One+of+Us+is+Lying" target="_blank">"One of Us Is Lying" by Karen M. McManus</a></li>
+            <li><a href="https://www.google.com/search?q=Truly+Devious" target="_blank">"Truly Devious" by Maureen Johnson</a></li>
+            <li><a href="https://www.google.com/search?q=A+Good+Girl%27s+Guide+to+Murder" target="_blank">"A Good Girl's Guide to Murder" by Holly Jackson</a></li>
+            <li><a href="https://www.google.com/search?q=Anne+of+Green+Gables" target="_blank">"Anne of Green Gables" by L.M. Montgomery</a></li>
+            <li><a href="https://www.google.com/search?q=The+Little+Prince" target="_blank">"The Little Prince" by Antoine de Saint-Exupéry</a></li>
+            <li><a href="https://www.google.com/search?q=Bridge+to+Terabithia" target="_blank">"Bridge to Terabithia" by Katherine Paterson</a></li>
+            <li><a href="https://www.google.com/search?q=Matilda" target="_blank">"Matilda" by Roald Dahl</a></li>
+            <li><a href="https://www.google.com/search?q=You+Are+Awesome+by+Matthew+Syed" target="_blank">"You Are Awesome" by Matthew Syed</a></li>
+            <li><a href="https://www.google.com/search?q=Becoming+Young+Readers" target="_blank">"Becoming: Adapted for Young Readers" by Michelle Obama</a></li>
+            <li><a href="https://www.google.com/search?q=I+Am+Malala" target="_blank">"I Am Malala" by Malala Yousafzai</a></li>
+                    <li><a href="https://www.google.com/search?q=Percy+Jackson+%26+The+Olympians" target="_blank">"Percy Jackson & The Olympians" by Rick Riordan</a></li>
+                    <li><a href="https://www.google.com/search?q=The+Hunger+Games" target="_blank">"The Hunger Games" by Suzanne Collins</a></li>
+                    <li><a href="https://www.google.com/search?q=Artemis+Fowl" target="_blank">"Artemis Fowl" by Eoin Colfer</a></li>
+                    <li><a href="https://www.google.com/search?q=His+Dark+Materials" target="_blank">"His Dark Materials" by Philip Pullman</a></li>
+                    <li><a href="https://www.google.com/search?q=Eragon" target="_blank">"Eragon" by Christopher Paolini</a></li>
+                    <li><a href="https://www.google.com/search?q=The+Fault+in+Our+Stars" target="_blank">"The Fault in Our Stars" by John Green</a></li>
+                    <li><a href="https://www.google.com/search?q=Eleanor+%26+Park" target="_blank">"Eleanor & Park" by Rainbow Rowell</a></li>
+                    <li><a href="https://www.google.com/search?q=Wonder+by+RJ+Palacio" target="_blank">"Wonder" by R.J. Palacio</a></li>
+                    <li><a href="https://www.google.com/search?q=Looking+for+Alaska" target="_blank">"Looking for Alaska" by John Green</a></li>
+                    <li><a href="https://www.google.com/search?q=The+Outsiders" target="_blank">"The Outsiders" by S.E. Hinton</a></li>
+                    <li><a href="https://www.google.com/search?q=One+of+Us+is+Lying" target="_blank">"One of Us Is Lying" by Karen M. McManus</a></li>
+                    <li><a href="https://www.google.com/search?q=Truly+Devious" target="_blank">"Truly Devious" by Maureen Johnson</a></li>
+                    <li><a href="https://www.google.com/search?q=A+Good+Girl%27s+Guide+to+Murder" target="_blank">"A Good Girl's Guide to Murder" by Holly Jackson</a></li>
+                    <li><a href="https://www.google.com/search?q=Anne+of+Green+Gables" target="_blank">"Anne of Green Gables" by L.M. Montgomery</a></li>
+                    <li><a href="https://www.google.com/search?q=The+Little+Prince" target="_blank">"The Little Prince" by Antoine de Saint-Exupéry</a></li>
+                    <li><a href="https://www.google.com/search?q=Bridge+to+Terabithia" target="_blank">"Bridge to Terabithia" by Katherine Paterson</a></li>
+                    <li><a href="https://www.google.com/search?q=Matilda" target="_blank">"Matilda" by Roald Dahl</a></li>
+                    <li><a href="https://www.google.com/search?q=You+Are+Awesome+by+Matthew+Syed" target="_blank">"You Are Awesome" by Matthew Syed</a></li>
+                    <li><a href="https://www.google.com/search?q=Becoming+Young+Readers" target="_blank">"Becoming: Adapted for Young Readers" by Michelle Obama</a></li>
+                    <li><a href="https://www.google.com/search?q=I+Am+Malala" target="_blank">"I Am Malala" by Malala Yousafzai</a></li>
+                    <li><a href="https://www.google.com/search?q=The+Great+Gatsby" target="_blank">"The Great Gatsby" by F. Scott Fitzgerald</a></li>
+            <li><a href="https://www.google.com/search?q=The+Hobbit" target="_blank">"The Hobbit" by J.R.R. Tolkien</a></li>
+            <li><a href="https://www.google.com/search?q=Pride+and+Prejudice" target="_blank">"Pride and Prejudice" by Jane Austen</a></li>
+            <li><a href="https://www.google.com/search?q=The+Catcher+in+the+Rye" target="_blank">"The Catcher in the Rye" by J.D. Salinger</a></li>
+            <li><a href="https://www.google.com/search?q=The+Alchemist+by+Paulo+Coelho" target="_blank">"The Alchemist" by Paulo Coelho</a></li>
+            <li><a href="https://www.google.com/search?q=The+Chronicles+of+Narnia" target="_blank">"The Chronicles of Narnia" by C.S. Lewis</a></li>
+            <li><a href="https://www.google.com/search?q=Little+Women" target="_blank">"Little Women" by Louisa May Alcott</a></li>
+            <li><a href="https://www.google.com/search?q=Harry+Potter+and+the+Sorcerer%27s+Stone" target="_blank">"Harry Potter and the Sorcerer's Stone" by J.K. Rowling</a></li>
+    <li><a href="https://www.google.com/search?q=To+Kill+a+Mockingbird" target="_blank">"To Kill a Mockingbird" by Harper Lee</a></li>
+    <li><a href="https://www.google.com/search?q=1984+by+George+Orwell" target="_blank">"1984" by George Orwell</a></li>
+    <li><a href="https://www.google.com/search?q=The+Great+Gatsby" target="_blank">"The Great Gatsby" by F. Scott Fitzgerald</a></li>
+    <li><a href="https://www.google.com/search?q=The+Hobbit" target="_blank">"The Hobbit" by J.R.R. Tolkien</a></li>
+    <li><a href="https://www.google.com/search?q=Pride+and+Prejudice" target="_blank">"Pride and Prejudice" by Jane Austen</a></li>
+    <li><a href="https://www.google.com/search?q=The+Catcher+in+the+Rye" target="_blank">"The Catcher in the Rye" by J.D. Salinger</a></li>
+    <li><a href="https://www.google.com/search?q=The+Alchemist+by+Paulo+Coelho" target="_blank">"The Alchemist" by Paulo Coelho</a></li>
+    <li><a href="https://www.google.com/search?q=The+Chronicles+of+Narnia" target="_blank">"The Chronicles of Narnia" by C.S. Lewis</a></li>
+    <li><a href="https://www.google.com/search?q=Little+Women" target="_blank">"Little Women" by Louisa May Alcott</a></li>
+            <li><a href="https://www.google.com/search?q=Percy+Jackson+%26+The+Olympians" target="_blank">"Percy Jackson & The Olympians" by Rick Riordan</a></li>
+            <li><a href="https://www.google.com/search?q=The+Great+Gatsby" target="_blank">"The Great Gatsby" by F. Scott Fitzgerald</a></li>
+<li><a href="https://www.google.com/search?q=To+Kill+a+Mockingbird" target="_blank">"To Kill a Mockingbird" by Harper Lee</a></li>
+<li><a href="https://www.google.com/search?q=1984" target="_blank">"1984" by George Orwell</a></li>
+<li><a href="https://www.google.com/search?q=Pride+and+Prejudice" target="_blank">"Pride and Prejudice" by Jane Austen</a></li>
+<li><a href="https://www.google.com/search?q=Harry+Potter+series" target="_blank">"Harry Potter Series" by J.K. Rowling</a></li>
+<li><a href="https://www.google.com/search?q=Percy+Jackson+%26+The+Olympians" target="_blank">"Percy Jackson & The Olympians" by Rick Riordan</a></li>
+<li><a href="https://www.google.com/search?q=The+Hunger+Games" target="_blank">"The Hunger Games" by Suzanne Collins</a></li>
+<li><a href="https://www.google.com/search?q=Little+Women" target="_blank">"Little Women" by Louisa May Alcott</a></li>
+<li><a href="https://www.google.com/search?q=The+Book+Thief" target="_blank">"The Book Thief" by Markus Zusak</a></li>
+<li><a href="https://www.google.com/search?q=The+Alchemist" target="_blank">"The Alchemist" by Paulo Coelho</a>
+<li><a href="https://www.google.com/search?q=The+Catch+22" target="_blank">"Catch-22" by Joseph Heller</a></li>
+<li><a href="https://www.google.com/search?q=The+Lord+of+the+Rings+series" target="_blank">"The Lord of the Rings Series" by J.R.R. Tolkien</a></li>
+<li><a href="https://www.google.com/search?q=The+Chronicles+of+Narnia" target="_blank">"The Chronicles of Narnia" by C.S. Lewis</a></li>
+<li><a href="https://www.google.com/search?q=The+Da+Vinci+Code" target="_blank">"The Da Vinci Code" by Dan Brown</a></li>
+<li><a href="https://www.google.com/search?q=Brave+New+World" target="_blank">"Brave New World" by Aldous Huxley</a></li>
+<li><a href="https://www.google.com/search?q=Animal+Farm" target="_blank">"Animal Farm" by George Orwell</a></li>
+<li><a href="https://www.google.com/search?q=Jane+Eyre" target="_blank">"Jane Eyre" by Charlotte Brontë</a></li>
+<li><a href="https://www.google.com/search?q=Wuthering+Heights" target="_blank">"Wuthering Heights" by Emily Brontë</a></li>
+<li><a href="https://www.google.com/search?q=Moby+Dick" target="_blank">"Moby-Dick" by Herman Melville</a></li>
+<li><a href="https://www.google.com/search?q=War+and+Peace" target="_blank">"War and Peace" by Leo Tolstoy</a></li>
+<li><a href="https://www.google.com/search?q=Crime+and+Punishment" target="_blank">"Crime and Punishment" by Fyodor Dostoevsky</a></li>
+<li><a href="https://www.google.com/search?q=The+Kite+Runner" target="_blank">"The Kite Runner" by Khaled Hosseini</a></li>
+<li><a href="https://www.google.com/search?q=Memoirs+of+a+Geisha" target="_blank">"Memoirs of a Geisha" by Arthur Golden</a></li>
+<li><a href="https://www.google.com/search?q=The+Shining" target="_blank">"The Shining" by Stephen King</a></li>
+<li><a href="https://www.google.com/search?q=Dune" target="_blank">"Dune" by Frank Herbert</a></li>
+<li><a href="https://www.google.com/search?q=The+Martian" target="_blank">"The Martian" by Andy Weir</a></li>
+<li><a href="https://www.google.com/search?q=It+Ends+With+Us" target="_blank">"It Ends With Us" by Colleen Hoover</a></li>
+<li><a href="https://www.google.com/search?q=The+Fault+in+Our+Stars" target="_blank">"The Fault in Our Stars" by John Green</a></li>
+<li><a href="https://www.google.com/search?q=The+Secret+Garden" target="_blank">"The Secret Garden" by Frances Hodgson Burnett</a></li>
+<li><a href="https://www.google.com/search?q=Anne+of+Green+Gables" target="_blank">"Anne of Green Gables" by Lucy Maud Montgomery</a></li>
+<li><a href="https://www.google.com/search?q=The+Light+We+Lost" target="_blank">"The Light We Lost" by Jill Santopolo</a></li>
+<li><a href="https://www.google.com/search?q=The+Picture+of+Dorian+Gray" target="_blank">"The Picture of Dorian Gray" by Oscar Wilde</a></li>
+<li><a href="https://www.google.com/search?q=The+Hobbit" target="_blank">"The Hobbit" by J.R.R. Tolkien</a></li>
+<li><a href="https://www.google.com/search?q=A+Thousand+Splendid+Suns" target="_blank">"A Thousand Splendid Suns" by Khaled Hosseini</a></li>
+<li><a href="https://www.google.com/search?q=Slaughterhouse-Five" target="_blank">"Slaughterhouse-Five" by Kurt Vonnegut</a></li>
+<li><a href="https://www.google.com/search?q=The+Inferno" target="_blank">"The Inferno" by Dante Alighieri</a></li>
+<li><a href="https://www.google.com/search?q=The+Bell+Jar" target="_blank">"The Bell Jar" by Sylvia Plath</a></li>
+<li><a href="https://www.google.com/search?q=The+Outsiders" target="_blank">"The Outsiders" by S.E. Hinton</a></li>
+<li><a href="https://www.google.com/search?q=One+Hundred+Years+of+Solitude" target="_blank">"One Hundred Years of Solitude" by Gabriel García Márquez</a></li>
+<li><a href="https://www.google.com/search?q=Beloved" target="_blank">"Beloved" by Toni Morrison</a></li>
+<li><a href="https://www.google.com/search?q=The+Giver" target="_blank">"The Giver" by Lois Lowry</a></li>
+<li><a href="https://www.google.com/search?q=Fahrenheit+451" target="_blank">"Fahrenheit 451" by Ray Bradbury</a></li>
+<li><a href="https://www.google.com/search?q=Dracula" target="_blank">"Dracula" by Bram Stoker</a></li>
+<li><a href="https://www.google.com/search?q=The+Color+Purple" target="_blank">"The Color Purple" by Alice Walker</a></li>
+<li><a href="https://www.google.com/search?q=The+Road" target="_blank">"The Road" by Cormac McCarthy</a></li>
+<li><a href="https://www.google.com/search?q=The+Handmaid's+Tale" target="_blank">"The Handmaid's Tale" by Margaret Atwood</a></li>
+<li><a href="https://www.google.com/search?q=The+Goldfinch" target="_blank">"The Goldfinch" by Donna Tartt</a></li>
+<li><a href="https://www.google.com/search?q=The+Night+Circus" target="_blank">"The Night Circus" by Erin Morgenstern</a></li>
+<li><a href="https://www.google.com/search?q=Circe" target="_blank">"Circe" by Madeline Miller</a></li>
+<li><a href="https://www.google.com/search?q=Educated" target="_blank">"Educated" by Tara Westover</a></li>
+</ul>
+                </ul>
+    </section>
+    <button id="returnButton" onclick="window.location.href='admin page.html';">
+        <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Back Icon">
+    </button>
+
+    <script>
+        // Function to Add a New Book
+        function addBook() {
+            const title = document.getElementById('bookTitle').value;
+            const author = document.getElementById('bookAuthor').value;
+            const bookList = document.getElementById('bookList');
+
+            if (title && author) {
+                const newBook = document.createElement('li');
+                newBook.textContent = `${title} by ${author}`;
+                bookList.appendChild(newBook);
+
+                // Clear input fields after adding
+                document.getElementById('bookTitle').value = '';
+                document.getElementById('bookAuthor').value = '';
+            } else {
+                alert('Please enter both title and author!');
+            }
+        }
+    </script>
+</body>
+</html>
